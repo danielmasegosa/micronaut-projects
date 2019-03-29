@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 class BooksServiceImpl: BooksService {
 
-    var booksList = mutableListOf(
+    private var booksList = mutableListOf(
         Book("1491950358", "Building Microservices"),
         Book("1680502395", "Release It"),
         Book("0321601912", "Continous Delivery"))
