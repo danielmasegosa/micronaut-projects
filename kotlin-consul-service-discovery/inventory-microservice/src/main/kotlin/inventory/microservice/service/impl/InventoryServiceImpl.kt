@@ -17,8 +17,16 @@ class InventoryServiceImpl: InventoryService {
     }
 
     override fun insertStockToBook(isbn: String, newStock: Int): BookInventory {
-        return inventory
+        val updatedBookInventory = inventory
             .filter { bookInventory -> bookInventory.isbn == isbn }
             .map { it.copy(isbn = it.isbn, stock = it.stock + newStock) }[0]
+
+        val removeIf: Boolean = inventory.removeIf { it.isbn == isbn }
+
+        if(removeIf) {
+            inventory.add(updatedBookInventory)
+        }
+
+        return updatedBookInventory
     }
 }
