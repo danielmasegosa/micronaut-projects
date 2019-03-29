@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: recomendation.microservice
+---
+testFramework: spek
+sourceLanguage: kotlin

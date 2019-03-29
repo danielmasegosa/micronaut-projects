@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: inventory.microservice
+---
+testFramework: spek
+sourceLanguage: kotlin
