@@ -1,16 +1,28 @@
 package catalogue.microservice.controller
 
 import catalogue.microservice.model.Book
+import catalogue.microservice.service.BooksService
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
+import io.micronaut.http.annotation.Post
+import io.micronaut.runtime.server.EmbeddedServer
+import io.micronaut.validation.Validated
+import javax.validation.constraints.NotEmpty
 
+@Validated
 @Controller("/books")
-class BooksController {
+class BooksController(val booksService: BooksService,
+                      val embeddedServer: EmbeddedServer) {
 
-    @Get("/")
-    internal fun index() : List<Book> {
-        return listOf(Book("1491950358", "Building Microservices"),
-                Book("1680502395", "Release It"),
-                Book("0321601912", "Continous Delivery"))
+    @Get
+    internal fun getAllBooks() : List<Book> {
+        print(embeddedServer.port)
+        return booksService.findAllBooks()
+    }
+
+    @Post
+    internal fun insertBook(@NotEmpty book: Book): Book {
+        print(embeddedServer.port)
+        return booksService.insertBook(book)
     }
 }

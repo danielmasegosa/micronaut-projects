@@ -3,7 +3,7 @@ micronaut:
     application:
         name: bookcatalogue
     server:
-        port: 8081
+        port: -1
 
 ---
 consul:
