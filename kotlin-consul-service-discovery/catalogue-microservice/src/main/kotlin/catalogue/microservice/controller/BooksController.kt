@@ -2,7 +2,6 @@ package catalogue.microservice.controller
 
 import catalogue.microservice.model.Book
 import catalogue.microservice.service.BooksService
-import com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post

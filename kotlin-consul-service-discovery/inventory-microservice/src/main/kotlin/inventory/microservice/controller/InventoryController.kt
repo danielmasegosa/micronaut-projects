@@ -1,6 +1,5 @@
 package inventory.microservice.controller
 
-import com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER
 import inventory.microservice.model.BookInventory
 import inventory.microservice.service.InventoryService
 import io.micronaut.http.annotation.Controller
