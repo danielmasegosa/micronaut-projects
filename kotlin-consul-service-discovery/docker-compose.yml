@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  consul:
+    image: consul:latest
+    ports:
+      - 8500:8500
+    networks:
+      - overlay
+
+  catalogue-service:
+    image: danielmasegosa/catalogue-microservice
+    environment:
+      - CONSUL_HOST=consul
+    networks:
+      - overlay
+
+  inventory-service:
+    image: danielmasegosa/inventory-microservice
+    environment:
+      - CONSUL_HOST=consul
+    networks:
+      - overlay
+
+  recommendation-service:
+    image: danielmasegosa/recommendation-microservice
+    environment:
+      - CONSUL_HOST=consul
+    ports:
+      - 8080:8080
+    networks:
+      - overlay
+
+networks:
+  overlay:
