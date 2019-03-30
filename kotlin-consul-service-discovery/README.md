@@ -1,1 +1,1 @@
-# Kotlin and Consul as Service Discovey
+# Kotlin and Consul as Service Discovery
