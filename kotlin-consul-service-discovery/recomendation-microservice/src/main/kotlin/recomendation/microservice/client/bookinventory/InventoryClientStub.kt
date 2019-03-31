@@ -11,9 +11,9 @@ class InventoryClientStub: InventoryOperations {
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
 
-    override fun hasStock(@NotBlank isbn: String): Boolean {
+    override fun hasStock(@NotBlank isbn: String): Int {
         logger.info("Error at get stock for book with ISBN: $isbn")
-        return false
+        return 0
     }
 
     override fun addStock(isbn: String, stockToAdd: Int): BookInventory {

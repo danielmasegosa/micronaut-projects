@@ -1,5 +1,6 @@
 package recomendation.microservice.controller
 
+import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Patch
@@ -12,7 +13,7 @@ import javax.validation.constraints.NotEmpty
 class InventoryController(private val inventoryOperations: InventoryOperations) {
 
     @Get("/stock/{isbn}")
-    fun getStock(@NotBlank isbn: String): Boolean? {
+    fun getStock(@NotBlank isbn: String): Int {
         return inventoryOperations.hasStock(isbn)
     }
 

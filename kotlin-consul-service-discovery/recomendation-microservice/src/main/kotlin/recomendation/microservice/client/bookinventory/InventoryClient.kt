@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank
 interface InventoryClient: InventoryOperations {
 
     @Get("/books/stock/{isbn}")
-    override fun hasStock(@NotBlank isbn: String): Boolean
+    override fun hasStock(@NotBlank isbn: String): Int
 
     @Patch("/books/stock/{isbn}")
     override fun addStock(isbn: String, stockToAdd: Int): BookInventory

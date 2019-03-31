@@ -5,6 +5,6 @@ import javax.validation.constraints.NotBlank
 
 interface InventoryOperations {
 
-    fun hasStock(@NotBlank isbn: String): Boolean
+    fun hasStock(@NotBlank isbn: String): Int
     fun addStock(@NotBlank isbn: String, @NotBlank stockToAdd: Int): BookInventory
 }
