@@ -12,28 +12,32 @@ class InventoryServiceImpl: InventoryService {
         BookInventory("1491950358", 0),
         BookInventory("1680502395", 0))
 
-    override fun getStockFromIsbn(isbn: String): Boolean {
+    override fun getStockFromIsbn(isbn: String): Int? {
 
-        val filter: List<BookInventory> = inventory.filter { it.isbn == isbn }
-        val optional = when {
-            filter.isNotEmpty() -> Optional.of(filter[0])
-            else -> Optional.empty()
+        val bookInventory: List<BookInventory> = inventory.filter { it.isbn == isbn }
+
+        return when {
+            bookInventory.isNotEmpty() -> bookInventory[0].stock
+            else -> null
         }
-
-        return optional.map { it.stock > 0 }.orElse(false)
     }
 
-    override fun insertStockToBook(isbn: String, newStock: Int): BookInventory {
-        val updatedBookInventory = inventory
+    override fun insertStockToBook(isbn: String, newStock: Int): BookInventory? {
+
+        val filteredBooksInventory = inventory
             .filter { bookInventory -> bookInventory.isbn == isbn }
-            .map { it.copy(isbn = it.isbn, stock = it.stock + newStock) }[0]
 
-        val removeIf: Boolean = inventory.removeIf { it.isbn == isbn }
+        return when {
+            filteredBooksInventory.isNotEmpty() -> {
+                val updatedBookInventory = filteredBooksInventory.map { it.copy(isbn = isbn, stock = it.stock + newStock) }[0]
+                val removeIf: Boolean = inventory.removeIf { it.isbn == isbn }
 
-        if(removeIf) {
-            inventory.add(updatedBookInventory)
+                if(removeIf) {
+                    inventory.add(updatedBookInventory)
+                }
+                return updatedBookInventory
+            }
+            else -> null
         }
-
-        return updatedBookInventory
     }
 }

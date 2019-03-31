@@ -4,7 +4,7 @@ import inventory.microservice.model.BookInventory
 
 interface InventoryService {
 
-    fun getStockFromIsbn(isbn: String): Boolean
+    fun getStockFromIsbn(isbn: String): Int?
 
-    fun insertStockToBook(isbn: String, newStock: Int): BookInventory
+    fun insertStockToBook(isbn: String, newStock: Int): BookInventory?
 }
