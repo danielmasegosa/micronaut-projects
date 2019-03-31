@@ -13,7 +13,7 @@ class RecommendationController(private val catalogueOperations: CatalogueOperati
     @Get("/withStock")
     fun index(): List<BookRecommendation> {
         return catalogueOperations.findAll()
-                .filter { book -> inventoryOperations.hasStock(book.isbn) > 0 }
+                .filter { book -> inventoryOperations.hasStock(book.isbn).body()!! > 0 }
                 .map { book -> BookRecommendation(book.name)}
     }
 

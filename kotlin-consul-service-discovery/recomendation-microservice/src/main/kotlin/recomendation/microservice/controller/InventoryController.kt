@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty
 class InventoryController(private val inventoryOperations: InventoryOperations) {
 
     @Get("/stock/{isbn}")
-    fun getStock(@NotBlank isbn: String): Int {
+    fun getStock(@NotBlank isbn: String): HttpResponse<Int> {
         return inventoryOperations.hasStock(isbn)
     }
 
