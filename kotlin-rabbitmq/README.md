@@ -1,1 +1,1 @@
-# Kotlin and RabbitMQ
+# Kotlin and RabbitMQ 🐰
