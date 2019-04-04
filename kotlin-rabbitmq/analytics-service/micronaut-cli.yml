@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: analytics.service
+---
+testFramework: spek
+sourceLanguage: kotlin
